@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Restaurants </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <agm-map  [latitude]="lat" [longitude]="lng" [zoom]="13">
+    <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="onMarkerClick()"></agm-marker>
+    <agm-marker *ngFor=" let coords of resto" [latitude]="coords.latitude" [longitude]="coords.longitude" (markerClick)="onMarkerClick()"></agm-marker>
+  </agm-map>  
+</ion-content>

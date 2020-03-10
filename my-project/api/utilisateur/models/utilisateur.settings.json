@@ -1,0 +1,22 @@
+{
+  "info": {
+    "name": "Utilisateur"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    }
+  },
+  "connection": "default",
+  "collectionName": "utilisateurs"
+}

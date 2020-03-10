@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Compte  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="ajouterMenu()">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>  Plat du jour </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Plats</ion-label>
+        <ion-select multiple="true" cancelText="Nah" okText="Miaam!" [(ngModel)]="resto.dailies" name="dailies">
+          <ion-select-option  *ngFor=" let plt of plat" value="{{plt.id}}">{{plt.nom}}</ion-select-option>        
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Restaurants</ion-label>
+        <ion-select [(ngModel)]="resto.id" name="id">
+          <ion-select-option *ngFor=" let restaurant of restaurants" value="{{restaurant.id}}">{{restaurant.nom}}</ion-select-option>      
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button type="submit"> Enregistrer </ion-button>  
+  </form>
+  <ion-fab vertical="bottom" horiontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="list"></ion-icon>
+    </ion-fab-button> 
+    <ion-fab-list side="top">
+      <ion-fab-button color="success" (click)="logout()"  ><ion-icon name="log-out"></ion-icon></ion-fab-button>
+    </ion-fab-list> 
+  </ion-fab>
+</ion-content>

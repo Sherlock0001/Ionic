@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Modifier Plat </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/tabs/plat"></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup" (submit)="modifierPlat()" *ngIf="plat">
+    <ion-list>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input type="text" formControlName="nom"></ion-input>
+        <ion-text color="danger" *ngIf="formGroup.controls.nom.errors && formGroup.controls.nom.errors.required">Obligatoire</ion-text>
+        <ion-text color="danger" *ngIf="formGroup.controls.nom.errors && formGroup.controls.nom.errors.minlength">Minimum 2 caratères</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Prix</ion-label>
+        <ion-input type="number" formControlName="prix"></ion-input>
+        <ion-text color="danger" *ngIf="prixControl.hasError('required')">Ce champ est obligatoire</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea type="text" [(ngModel)]="plat.description" formControlName="description"></ion-textarea>
+      </ion-item>
+      <ion-button type="submit"> Sauvegarder </ion-button>
+    </ion-list>
+  </form>
+  <ion-fab vertical="bottom" horiontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="list"></ion-icon>
+    </ion-fab-button> 
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary" routerLink="/tabs/plat/ajouter-plat"><ion-icon name="add"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button color="secondary" routerLink="/tabs/plat/ajouter-plat"><ion-icon name="create"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

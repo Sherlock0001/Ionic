@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter un plat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="ajouterPlat()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input type="text" [(ngModel)]="plat.nom" name="nom" required minlength="2" #actor="ngModel"></ion-input>
+        <ion-text color="danger" *ngIf="actor.hasError('required')">Ce champ est obligatoire</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Prix</ion-label>
+        <ion-input type="number" [(ngModel)]="plat.prix" name="prix"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea type="text" [(ngModel)]="plat.description" name="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Restaurants</ion-label>
+        <ion-select interface="popover" [(ngModel)]="plat.restaurant" name="restaurant">
+          <ion-select-option *ngFor=" let restaurant of restaurants" value="{{restaurant.id}}">{{restaurant.nom}}</ion-select-option>          
+        </ion-select>
+      </ion-item>
+      <ion-button type="submit"> Enregistrer </ion-button>
+    </ion-list>
+  </form>
+</ion-content>

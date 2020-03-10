@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "plats",
+  "info": {
+    "name": "Plat"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "prix": {
+      "type": "integer"
+    },
+    "restaurant": {
+      "via": "dailies",
+      "model": "restaurant"
+    }
+  }
+}

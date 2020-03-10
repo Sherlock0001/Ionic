@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>    
+    <div *ngIf="from_restaurant; then thenHeader else elseHeader"> </div>
+    <ng-template #thenHeader>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/restaurant"></ion-back-button>
+      </ion-buttons>
+      <ion-title >  Restaurant </ion-title>
+    </ng-template>
+    <ng-template #elseHeader>
+      <ion-title >   Mes plats </ion-title>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="from_restaurant; then thenBlock else elseBlock"> </div>
+  <ng-template #thenBlock>
+      <ion-card>
+        <img src="/assets/{{restaurant.nom}}.svg" alt="" />
+        <ion-card-header>
+       <ion-card-title color="warning">{{restaurant.nom}}</ion-card-title>
+        </ion-card-header>      
+        <ion-card-content>
+          {{restaurant.description}}
+        </ion-card-content>
+        <ion-item-divider>
+          <ion-label color="warning"> Les plats </ion-label>
+        </ion-item-divider>
+        <ion-list>
+          <ion-item *ngFor=" let plat of restaurant.plats" >
+          <ion-label> {{plat.nom}}</ion-label>
+            {{plat.prix}}          
+          </ion-item>
+        </ion-list>
+        <ion-item-divider>
+          <ion-label color="warning"> Menu du jour </ion-label>
+        </ion-item-divider>
+        <ion-list>
+          <ion-item *ngFor=" let daily of restaurant.dailies" >
+          <ion-label> {{daily.nom}}</ion-label>
+            {{daily.prix}}          
+          </ion-item>
+        </ion-list>
+      </ion-card>
+  </ng-template>
+    <ng-template #elseBlock>
+      <ion-list>
+        <ion-item *ngFor=" let plat of plats" >
+        <ion-label> {{plat.nom}}</ion-label>
+          {{plat.prix}}
+          <ion-icon name="create"  color="warning" (click)="modifierPlat(plat.id)"></ion-icon>
+          <ion-icon name="trash" color="danger" (click)="deletePlat(plat.id)"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+    <ion-fab vertical="bottom" horiontal="start" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="list"></ion-icon>
+      </ion-fab-button> 
+      <ion-fab-list side="top">
+        <ion-fab-button color="success" routerLink="/tabs/plat/ajouter-plat"><ion-icon name="add"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+      <ion-fab-list side="end">
+        <ion-fab-button color="warning" routerLink="/tabs/restaurant"><ion-icon name="restaurant"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+</ion-content>

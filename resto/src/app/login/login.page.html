@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+       <ion-title>Connexion</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="loginForm" (submit)="login(loginForm.value)" style="padding-top:10px; margin-top: 80px; min-height:230px; box-shadow: 4px 4px 4px 4px rgb(204, 202, 202)">
+        <ion-list>
+            <ion-item>
+                <ion-label position="stacked">Email</ion-label>
+                <ion-input required formControlName="identifier"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="stacked">Mot de passe</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-button type="submit" expand="full"> Se connecter </ion-button>
+        <ion-button color="success" [ngStyle]="{'width':25}" routerLink="/register"> S'inscrire </ion-button>
+        <ion-button color="warning" [ngStyle]="{'width': 10}"  (click)="sendCode(loginForm.value)" routerLink="/password"> Mot de passe oublié ? </ion-button>
+    </form>
+</ion-content>

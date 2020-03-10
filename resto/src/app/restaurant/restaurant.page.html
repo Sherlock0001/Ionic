@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Restos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list>
+      <ion-item *ngFor=" let restaurant of restaurants" >
+        <ion-card>
+          <ion-card-header>
+          <a href="/tabs/plat/{{restaurant.id}}"><ion-card-title color="grey" style="text-align: center">{{restaurant.nom}}</ion-card-title></a>
+          </ion-card-header>
+          <ion-card-content>
+            {{restaurant.description}}
+          </ion-card-content>
+        </ion-card> 
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab vertical="bottom" horiontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="list"></ion-icon>
+    </ion-fab-button> 
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary" routerLink="/tabs/plat"><ion-icon name="add"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button color="grey" routerLink="/tabs/restaurant"><ion-icon name="restaurant"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
